@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sample.mapper.BoardMapper">
+
+  <insert id="insertBoard" parameterType="BoardVO">
+        INSERT INTO pd_board (boardid, productid, userid, status, regdate)
+        VALUES (pd_board_seq.NEXTVAL, #{productid}, #{userid}, #{status}, SYSDATE)
+    </insert>
+
+    <select id="selectBoardById" parameterType="int" resultType="BoardVO">
+        SELECT * FROM pd_board WHERE boardid = #{boardid}
+    </select>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM pd_board WHERE boardid = #{boardid}
+    </delete>
+
+    <update id="updateBoard" parameterType="BoardVO">
+        UPDATE pd_board
+        SET status = #{status}
+        WHERE boardid = #{boardid}
+    </update>
+
+
+<!-- 이 밑으로 수정해야함. -->
+
+  <!-- 조건 검색 공통 SQL 조각 -->
+  <sql id="criteria">
+    <trim prefix="(" suffix=") AND">
+      <foreach collection="typeArr" item="type" separator="OR">
+        <if test="type eq 'T'">
+          title LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'C'">
+          description LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'W'">
+          nickname LIKE '%' || #{keyword} || '%'
+        </if>
+      </foreach>
+    </trim>
+  </sql>
+
+ <select id="getListWithPaging" resultType="org.sample.domain.BoardVO">
+  <![CDATA[
+    SELECT *
+    FROM (
+      SELECT rownum rn, p.*
+      FROM (
+        SELECT pno, title, description, price, product, condition, imgPath, nickname, pwd, status, brand, regdate
+        FROM paldo
+        WHERE pno > 0
+  ]]>
+  <if test="keyword != null and keyword != ''">
+    AND
+    <include refid="criteria"/>
+  </if>
+  <![CDATA[
+        ORDER BY pno DESC
+      ) p
+      WHERE rownum <= #{pageNum} * #{amount}
+    )
+    WHERE rn > (#{pageNum} - 1) * #{amount}
+  ]]>
+</select>
+
+  <select id="getTotalCount" resultType="int">
+    SELECT COUNT(*) FROM paldo
+    WHERE
+    <include refid="criteria"/>
+    pno > 0
+  </select>
+
+  <select id="searchTest" resultType="org.sample.domain.BoardVO">
+    <![CDATA[
+      SELECT * FROM paldo
+      WHERE
+    ]]>
+    <trim suffix="AND">
+      <foreach collection="map" index="key" item="val" separator="OR" open="(" close=")">
+        <if test="key eq 'T'">
+          title LIKE #{val}
+        </if>
+        <if test="key eq 'C'">
+          description LIKE #{val}
+        </if>
+        <if test="key eq 'W'">
+          nickname LIKE #{val}
+        </if>
+      </foreach>
+    </trim>
+    <![CDATA[
+      rownum < 10
+    ]]>
+    
+  </select>
+
+</mapper>

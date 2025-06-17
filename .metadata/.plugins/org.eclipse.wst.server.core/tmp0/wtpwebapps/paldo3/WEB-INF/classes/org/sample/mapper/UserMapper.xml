@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sample.mapper.UserMapper">
+
+  <insert id="insertUser" parameterType="org.sample.domain.UserVO">
+        INSERT INTO pd_user (userid, nickname, pwd, email)
+        VALUES (pd_user_seq.NEXTVAL, #{nickname}, #{pwd}, #{email})
+    </insert>
+
+    <select id="readBoard" parameterType="Long" resultType="org.sample.domain.UserVO">
+        SELECT * FROM pd_user WHERE userid = #{userid}
+    </select>
+
+    <delete id="deleteUser" parameterType="Long">
+        DELETE FROM pd_user WHERE userid = #{userid}
+    </delete>
+
+    <update id="updateUser" parameterType="org.sample.domain.UserVO">
+        UPDATE pd_user
+        SET nickname = #{nickname}, pwd = #{pwd}, email = #{email}
+        WHERE userid = #{userid}
+    </update>
+</mapper>

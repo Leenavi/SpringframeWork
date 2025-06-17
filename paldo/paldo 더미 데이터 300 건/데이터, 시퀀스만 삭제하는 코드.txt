@@ -1,0 +1,20 @@
+-- 데이터 전체 삭제
+DELETE FROM pd_board;
+DELETE FROM pd_imgpath;
+DELETE FROM pd_user;
+DELETE FROM pd_product;
+
+-- 시퀀스 삭제
+drop sequence pd_user_seq;
+drop sequence pd_imgpath_seq;
+drop sequence pd_board_seq;
+drop sequence pd_product_seq;
+
+select *
+from all_sequences;
+
+--시퀀스 재등록(id가 1번부터 다시 시작)
+create sequence pd_user_seq;
+create sequence pd_product_seq;
+create sequence pd_board_seq;
+create sequence pd_imgpath_seq;

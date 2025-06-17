@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sample.mapper.BoardMapper">
+
+  <insert id="insertBoard" parameterType="org.sample.domain.BoardVO">
+        INSERT INTO pd_board (boardid, productid, userid, status, regdate)
+        VALUES (pd_board_seq.NEXTVAL, #{productid}, #{userid}, #{status}, SYSDATE)
+    </insert>
+
+    <select id="readBoard" parameterType="Long" resultType="org.sample.domain.BoardVO">
+        SELECT * FROM pd_board WHERE boardid = #{boardid}
+    </select>
+
+    <delete id="deleteBoard" parameterType="Long">
+        DELETE FROM pd_board WHERE boardid = #{boardid}
+    </delete>
+
+    <update id="updateBoard" parameterType="org.sample.domain.BoardVO">
+        UPDATE pd_board
+        SET status = #{status}
+        WHERE boardid = #{boardid}
+    </update>
+    
+     <!-- 게시글 전체 목록 조회 -->
+    <select id="selectAll" resultType="org.sample.domain.BoardVO">
+        SELECT *
+        FROM pd_board
+        ORDER BY boardid DESC
+    </select>
+
+
+<!-- 이 밑으로 수정해야함. -->
+
+  <!-- 조건 검색 공통 SQL 조각 -->
+  <sql id="criteria">
+    <trim prefix="(" suffix=") AND">
+      <foreach collection="typeArr" item="type" separator="OR">
+        <if test="type eq 'T'">
+          title LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'C'">
+          description LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'W'">
+          nickname LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'B'">
+          brand LIKE '%' || #{keyword} || '%'
+        </if>
+      </foreach>
+    </trim>
+  </sql>
+
+<select id="getListWithPaging" resultType="org.sample.domain.BoardVO">
+  	<![CDATA[
+  	select boardid, title, nickname, status, brand, regdate
+  	from(
+  		select /*+ index_desc(pd_board pk_board)*/
+  		rownum rn, boardid, title, nickname, status, brand, regdate
+  		from pd_board
+  		where
+  	]]>
+  	
+  	<include refid="criterial"></include>
+  		
+  	<![CDATA[
+  		 rownum <= #{pageNum} * #{amount}
+  	)
+  	where rn > (#{pageNum}-1)*#{amount}
+  	]]>
+  </select>
+
+  <select id="countTotal" resultType="int">
+    SELECT COUNT(*) FROM pd_board
+    WHERE
+    <include refid="criteria"/>
+    boardid > 0
+  </select>
+
+<!--   <select id="searchTest" resultType="org.sample.domain.BoardVO">
+    <![CDATA[
+      SELECT * FROM paldo
+      WHERE
+    ]]>
+    <trim suffix="AND">
+      <foreach collection="map" index="key" item="val" separator="OR" open="(" close=")">
+        <if test="key eq 'T'">
+          title LIKE #{val}
+        </if>
+        <if test="key eq 'C'">
+          description LIKE #{val}
+        </if>
+        <if test="key eq 'W'">
+          nickname LIKE #{val}
+        </if>
+      </foreach>
+    </trim>
+    <![CDATA[
+      rownum < 10
+    ]]>
+    
+  </select> -->
+
+</mapper>

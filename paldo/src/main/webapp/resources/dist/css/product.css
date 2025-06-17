@@ -1,0 +1,380 @@
+@charset "UTF-8";
+
+/* ✅ 공통 설정 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0 auto;
+}
+
+h2 {
+    font-size: 26px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* ✅ 버튼: 세련된 파란색 그라데이션 */
+.btn-blue {
+    background: linear-gradient(to right, #1e90ff, #005bac);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 91, 172, 0.15);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-blue:hover {
+    background: linear-gradient(to right, #0073e6, #004080);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 91, 172, 0.25);
+}
+
+.btn-blue:disabled {
+    background: #cccccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ✅ 테이블 (게시글 목록) */
+table {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+th, td {
+    padding: 14px 12px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 15px;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f2f4f7;
+}
+
+table td a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+table td a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ 글쓰기 버튼 영역 */
+.top-container {
+    width: 95%;
+    margin: 10px auto 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* ✅ 등록 폼 스타일 */
+.product-register-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.required {
+    color: red;
+}
+
+.product-form input[type="text"],
+.product-form input[type="number"],
+.product-form input[type="password"],
+.product-form input[type="file"],
+.product-form textarea,
+.product-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.product-form textarea {
+    resize: vertical;
+}
+
+/* ✅ 옵션 버튼 (상품 상태 등) */
+.option-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.option-btn {
+    padding: 10px 20px;
+    border: 2px solid #ccc;
+    background-color: white;
+    color: #333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    border-color: #1e90ff;
+    background-color: #e6f2ff;
+    color: #1e90ff;
+}
+
+.option-btn.active {
+    border-color: #1e90ff;
+    background-color: #1e90ff;
+    color: white;
+}
+
+/* ✅ 등록 버튼 정렬 */
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ✅ 상세 페이지: 제품 정보 카드 */
+.product-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-images {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.product-images .main-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1.5;
+}
+
+.product-info .product-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-info div {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.product-description {
+    margin-top: 20px;
+    line-height: 1.6;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+
+/* ✅ 라디오 버튼 숨기기 */
+input[type="radio"] {
+    display: none;
+}
+
+/* ✅ 공통 스타일 라벨 버튼 (상품 상태, 판매 상태 등) */
+.btn-radio {
+    display: inline-block;
+    padding: 10px 18px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    color: #333;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+/* ✅ hover 시 */
+.btn-radio:hover {
+    border-color: #1e90ff;
+    background-color: #e6f2ff;
+    color: #1e90ff;
+}
+
+/* ✅ 선택된 경우 (checked) */
+input[type="radio"]:checked + .btn-radio {
+    background-color: #1e90ff;
+    color: #fff;
+    border-color: #1e90ff;
+}
+/* ✅ 썸네일 리스트 */
+.thumb-list {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+.thumb {
+    width: 68px;
+    height: 68px;
+    background: #fff;
+    border: 2px solid #d3e6ff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(30, 144, 255, 0.07);
+    transition: border 0.2s;
+}
+.thumb img {
+    width: 60px; height: auto;
+}
+.thumb.empty {
+    border: 2px dashed #e0e0e0;
+    background: #f6f6f6;
+}
+
+/* ✅ 대표 이미지 더 고정 크기 */
+.product-images .main-image {
+    width: 340px; height: 340px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+}
+
+/* ✅ 옵션/등급/컬러 버튼: 뱃지/네모/라운드 느낌 */
+.option,
+.color,
+.grade {
+    padding: 8px 20px;
+    border-radius: 9px;
+    border: 2px solid #b3d6ff;
+    background: #fff;
+    color: #1976d2;
+    font-weight: 600;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+.option.active, .color.active, .grade.active {
+    background: #e3edff;
+    border-color: #1e90ff;
+    color: #004080;
+}
+
+/* ✅ 상태 메시지 박스 */
+.status-message {
+    margin: 14px 0;
+    background: #e7f2ff;
+    color: #2073c9;
+    border-radius: 10px;
+    padding: 10px 16px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+/* ✅ 구매폼(가격/수량/구매버튼) */
+.purchase-form {
+    border: 2px solid #b3d6ff;
+    border-radius: 14px;
+    padding: 20px 26px;
+    background: #fff;
+    margin-top: 25px;
+}
+.purchase-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+.qty-btn {
+    width: 34px; height: 34px;
+    border: 1px solid #c3c3c3;
+    background: #f7f7f7;
+    font-size: 20px;
+    border-radius: 7px;
+    color: #666;
+    transition: background 0.2s;
+}
+.qty-btn:hover { background: #e6f2ff; color: #1e90ff; }
+.qty {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    background: #f3f6fa;
+    border-radius: 5px;
+}
+.sum-price {
+    margin-left: auto;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1e90ff;
+}
+
+/* ✅ 구매 버튼(100% 폭) */
+.btn-blue.btn-purchase {
+    width: 100%;
+    font-size: 19px;
+    padding: 16px 0;
+    border-radius: 10px;
+    margin-top: 10px;
+}

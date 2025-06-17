@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.sample.mapper.ProductMapper.xml">
+  
+  	<insert id="insertProduct" parameterType="ProductVO">
+        INSERT INTO pd_product (productid, title, description, price, condition, brand)
+        VALUES (pd_product_seq.NEXTVAL, #{title}, #{description}, #{price}, #{condition}, #{brand})
+    </insert>
+
+    <select id="selectProductById" parameterType="int" resultType="ProductVO">
+        SELECT * FROM pd_product WHERE productid = #{productid}
+    </select>
+
+    <delete id="deleteProduct" parameterType="int">
+        DELETE FROM pd_product WHERE productid = #{productid}
+    </delete>
+
+    <update id="updateProduct" parameterType="ProductVO">
+        UPDATE pd_product
+        SET title = #{title}, description = #{description}, price = #{price},
+            condition = #{condition}, brand = #{brand}
+        WHERE productid = #{productid}
+    </update>
+  </mapper>

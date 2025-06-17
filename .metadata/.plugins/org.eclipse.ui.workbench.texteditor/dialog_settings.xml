@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="delete"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="delete"/>
+			<item value="change"/>
+			<item value="role"/>
+			<item value="ul"/>
+			<item value="ul\"/>
+			<item value="remove"/>
+			<item value="resources/"/>
+			<item value="../"/>
+			<item value="tag"/>
+			<item value="org"/>
+			<item value="Path"/>
+			<item value="uploadFolderpath"/>
+			<item value="apple"/>
+			<item value="애플"/>
+			<item value="판매"/>
+		</list>
+		<list key="replacehistory">
+			<item value="/resources/"/>
+			<item value="resources/"/>
+			<item value="boardid"/>
+			<item value="PostDTO"/>
+			<item value="description"/>
+			<item value="paldo"/>
+			<item value="pno"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="980"/>
+		<item key="DIALOG_Y_ORIGIN" value="457"/>
+		<item key="DIALOG_WIDTH" value="288"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+	</section>
+</section>

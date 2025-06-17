@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sample.mapper.BoardMapper">
+
+  <insert id="insertBoard" parameterType="org.sample.domain.BoardVO">
+    INSERT INTO pd_board (boardid, productid, userid, status, regdate, title)
+    VALUES (pd_board_seq.NEXTVAL, #{productid}, #{userid}, #{status}, SYSDATE, #{title})
+  </insert>
+
+  <insert id="insertSelectKeyBoard" parameterType="org.sample.domain.BoardVO">
+    <selectKey keyProperty="boardid" resultType="long" order="BEFORE">
+      SELECT pd_board_seq.NEXTVAL FROM dual
+    </selectKey>
+    INSERT INTO pd_board (boardid, productid, userid, status, regdate, title)
+    VALUES (#{boardid}, #{productid}, #{userid}, #{status}, SYSDATE, #{title})
+  </insert>
+
+  <select id="readBoard" parameterType="long" resultType="org.sample.domain.BoardVO">
+    SELECT * FROM pd_board WHERE boardid = #{boardid}
+  </select>
+
+  <update id="updateBoard" parameterType="org.sample.domain.PostDTO">
+    UPDATE pd_board SET status = #{board.status, jdbcType=VARCHAR}, title = #{board.title} WHERE boardid = #{board.boardid}
+  </update>
+
+  <delete id="deleteBoard" parameterType="long">
+    DELETE FROM pd_board WHERE boardid = #{boardid}
+  </delete>
+
+  <select id="getListWithPaging" parameterType="org.sample.domain.Criteria" resultType="org.sample.domain.BoardVO">
+  SELECT rn, boardid, productid, userid, status, regdate, title
+  FROM (
+    SELECT ROWNUM rn, boardid, productid, userid, status, regdate, title
+    FROM (
+      SELECT boardid, productid, userid, status, regdate, title
+      FROM pd_board
+      ORDER BY boardid DESC
+    )
+      	<![CDATA[
+    WHERE ROWNUM <= #{pageNum} * #{amount}
+  )
+  WHERE rn > (#{pageNum} - 1) * #{amount}
+    	]]>
+</select>
+
+  <select id="countTotal" resultType="int">
+    SELECT COUNT(*) FROM pd_board
+  </select>
+
+  <select id="getList" parameterType="org.sample.domain.Criteria" resultType="org.sample.domain.BoardVO">
+    SELECT * FROM pd_board ORDER BY boardid DESC
+  </select>
+</mapper>

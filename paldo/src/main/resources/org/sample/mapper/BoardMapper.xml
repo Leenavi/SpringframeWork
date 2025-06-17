@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.sample.mapper.BoardMapper">
+
+  <!-- 1. 단건 조회 -->
+  <select id="read" parameterType="long" resultType="org.sample.domain.BoardVO">
+    SELECT 
+      b.boardid ,
+      b.title,
+      p.description,
+      p.price,
+      p.productid,
+      p.condition,
+      p.modelname AS product,
+      u.userid,
+      u.email,
+      u.nickname,
+      u.pwd,
+      b.status,
+      p.brand,
+      b.regdate,
+      (SELECT MIN(imgpath) FROM pd_imgpath i WHERE i.productid = p.productid) AS imgPath
+    FROM pd_board b
+    JOIN pd_product p ON b.productid = p.productid
+    JOIN pd_user u ON b.userid = u.userid
+    WHERE b.boardid = #{boardid}
+  </select>
+
+  <!-- 2. 전체 리스트 -->
+  <select id="getList" resultType="org.sample.domain.BoardVO">
+    SELECT 
+      b.boardid,
+      b.title,
+      p.description,
+      p.price,
+      p.productid,
+      p.condition,
+      p.modelname AS product,
+      u.nickname,
+      u.pwd,
+      b.status,
+      p.brand,
+      b.regdate,
+      (SELECT MIN(imgpath) FROM pd_imgpath i WHERE i.productid = p.productid) AS imgPath
+    FROM pd_board b
+    JOIN pd_product p ON b.productid = p.productid
+    JOIN pd_user u ON b.userid = u.userid
+    ORDER BY b.boardid DESC
+  </select>
+
+  <!-- 3. 게시글 등록 (productid는 이미 등록된 값으로 가정) -->
+	<insert id="insertUser" parameterType="org.sample.domain.UserVO" keyProperty="userid">
+  <selectKey keyProperty="userid" resultType="Long" order="BEFORE">
+    SELECT pd_user_seq.NEXTVAL FROM dual
+  </selectKey>
+  INSERT INTO pd_user (userid, nickname, pwd, email)
+  VALUES (#{userid}, #{nickname, jdbcType=VARCHAR}, #{pwd, jdbcType=VARCHAR}, #{email, jdbcType=VARCHAR})
+</insert>
+
+	<insert id="insertProduct" parameterType="org.sample.domain.ProductVO" keyProperty="productid" keyColumn="productid" useGeneratedKeys="true">
+  <selectKey keyProperty="productid" resultType="long" order="BEFORE">
+    SELECT pd_product_seq.NEXTVAL FROM dual
+	  </selectKey>
+	  INSERT INTO pd_product (productid, modelname, brand, condition, description, price)
+	  VALUES (#{productid}, #{modelname}, #{brand}, #{condition}, #{description}, #{price})
+	</insert>
+	<insert id="insertBoard" parameterType="org.sample.domain.BoardVO" useGeneratedKeys="true" keyProperty="boardid">
+	  <selectKey keyProperty="boardid" resultType="long" order="BEFORE">
+	    SELECT pd_board_seq.NEXTVAL FROM dual
+	  </selectKey>
+	  INSERT INTO pd_board (boardid, productid, userid, status, regdate, title)
+	  VALUES (#{boardid}, #{productid}, #{userid}, #{status}, SYSDATE, #{title})
+	</insert>
+	
+	<insert id="insertImgPath" parameterType="org.sample.domain.ImgPathVO" useGeneratedKeys="true" keyProperty="imgid">
+	  <selectKey keyProperty="imgid" resultType="long" order="BEFORE">
+	    SELECT pd_imgpath_seq.NEXTVAL FROM dual
+	  </selectKey>
+	  INSERT INTO pd_imgpath (imgid, productid, imgpath)
+	  VALUES (#{imgid}, #{productid}, #{imgPath})
+	</insert>
+
+  <!-- 4. 게시글 삭제 -->
+  <!-- pd_imgpath 테이블의 이미지 삭제 -->
+	<delete id="deleteImages" parameterType="long">
+	  DELETE FROM pd_imgpath WHERE productid = #{productid}
+	</delete>
+	
+	<!-- pd_product 테이블의 상품 삭제 -->
+	<delete id="deleteProduct" parameterType="long">
+	  DELETE FROM pd_product WHERE productid = #{productid}
+	</delete>
+	
+	<!-- pd_board 테이블의 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="long">
+	  DELETE FROM pd_board WHERE boardid = #{boardid}
+	</delete>
+
+  <!-- 5. 상품 정보 수정 -->
+  <update id="updateProduct" parameterType="org.sample.domain.ProductVO">
+    UPDATE pd_product
+    SET
+      description = #{description},
+      price = #{price},
+      condition = #{condition},
+      brand = #{brand},
+      modelname = #{modelname}
+    WHERE productid = #{productid}
+  </update>
+
+  <!-- 6. 게시글 정보 수정 -->
+  <update id="updateBoard" parameterType="org.sample.domain.BoardVO">
+    UPDATE pd_board
+    SET 
+      title = #{title},
+      status = #{status},
+      regdate = SYSDATE
+    WHERE boardid = #{boardid}
+  </update>
+
+  <!-- 7. 조건 검색 SQL 조각 -->
+  <sql id="criteria">
+    <trim prefix="(" suffix=") AND">
+      <foreach collection="typeArr" item="type" separator="OR">
+        <if test="type eq 'T'">
+          b.title LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'C'">
+          p.description LIKE '%' || #{keyword} || '%'
+        </if>
+        <if test="type eq 'W'">
+          u.nickname LIKE '%' || #{keyword} || '%'
+        </if>
+      </foreach>
+    </trim>
+  </sql>
+
+    <!-- 8. 페이징 리스트 -->
+<select id="getListWithPaging" resultType="org.sample.domain.BoardVO">
+  <![CDATA[
+  SELECT * FROM (
+    SELECT rownum rn, p.* FROM (
+      SELECT 
+        b.boardid,
+        b.title,
+        p.description,
+        p.price,
+        p.productid,
+        p.condition,
+        p.modelname AS product,
+        u.nickname,
+        u.pwd,
+        b.status,
+        p.brand,
+        b.regdate,
+        (SELECT MIN(imgpath) FROM pd_imgpath i WHERE i.productid = p.productid) AS imgPath
+      FROM pd_board b
+      JOIN pd_product p ON b.productid = p.productid
+      JOIN pd_user u ON b.userid = u.userid
+      WHERE 1=1
+  ]]>
+  <if test="keyword != null and keyword != ''">
+    AND (
+      b.title LIKE '%' || #{keyword} || '%'
+      OR p.description LIKE '%' || #{keyword} || '%'
+      OR u.nickname LIKE '%' || #{keyword} || '%'
+      OR p.brand LIKE '%' || #{keyword} || '%'
+    )
+  </if>
+  <![CDATA[
+      ORDER BY b.boardid DESC
+    ) p
+    WHERE rownum <= #{pageNum} * #{amount}
+  )
+  WHERE rn > (#{pageNum} - 1) * #{amount}
+  ]]>
+</select>
+
+
+
+  <!-- 9. 총 게시글 수 -->
+  <select id="getTotalCount" parameterType="org.sample.domain.Criteria" resultType="int">
+    SELECT COUNT(*)
+    FROM pd_board b
+    JOIN pd_product p ON b.productid = p.productid
+    JOIN pd_user u ON b.userid = u.userid
+    WHERE
+    <include refid="criteria"/>
+    1=1
+  </select>
+
+  <!-- 10. 브랜드별 리스트 -->
+  <select id="getListByBrand" parameterType="string" resultType="org.sample.domain.BoardVO">
+    SELECT 
+      b.boardid,
+      b.title,
+      p.description,
+      p.price,
+      p.productid,
+      p.condition,
+      p.modelname AS product,
+      u.nickname,
+      u.pwd,
+      b.status,
+      p.brand,
+      b.regdate,
+      (SELECT MIN(imgpath) FROM pd_imgpath i WHERE i.productid = p.productid) AS imgPath
+    FROM pd_board b
+    JOIN pd_product p ON b.productid = p.productid
+    JOIN pd_user u ON b.userid = u.userid
+    WHERE p.brand = #{brand}
+    ORDER BY b.regdate DESC
+  </select>
+	<select id="readProduct" parameterType="long" resultType="org.sample.domain.ProductVO">
+	  SELECT 
+	    productid, 
+	    description, 
+	    price, 
+	    brand, 
+	    condition, 
+	    modelname
+	  FROM pd_product
+	  WHERE productid = #{productid, jdbcType=NUMERIC}
+	</select>
+	
+	<!-- 사용자 정보 조회 -->
+	<select id="readUser" parameterType="long" resultType="org.sample.domain.UserVO">
+	  SELECT userid, nickname, email, pwd
+	  FROM pd_user
+	  WHERE userid = #{userid, jdbcType=NUMERIC}
+	</select>
+	
+	<!-- 이미지 리스트 조회 -->
+	<select id="getImageList" parameterType="long" resultType="org.sample.domain.ImgPathVO">
+	  SELECT imgid, productid, imgpath
+	  FROM pd_imgpath
+	  WHERE productid = #{productid, jdbcType=NUMERIC}
+	</select>
+</mapper>

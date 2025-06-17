@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.BoardMapper">
+	<!-- id는 인터페이스 메소드명, resultType은 리턴타입 경로.
+	SQL 실행 결과를 어떤 타입(클래스)으로 매핑할지를 지정
+	결과를 어디로 '보낸다(send)'기보단, 결과를 **어떤 타입으로 '받겠다(map)'**는 선언
+	return : 메서드를 호출한 쪽으로 되돌려주는 것 -->
+  <select id="read" resultType="org.zerock.domain.BoardVO">
+    select * from tbl_board where bno = #{bno}
+  </select>
+  <select id="getList" resultType="org.zerock.domain.BoardVO">
+    select * from tbl_board where bno > 0 order by bno desc
+  </select>
+  
+  <insert id="insert">
+  	insert into tbl_board(bno, title, content, writer) values(seq_board.nextval, #{title}, #{content}, #{writer})
+  </insert>
+  
+  <insert id="insertSelectKey">
+  	<selectKey keyProperty="bno" order="BEFORE" resultType="Long"> <!-- 기본값이 after이므로 다음 구문 실행하기 전에 하려면 꼭 before 넣어줘야함 -->
+  		select seq_board.nextval from dual
+  	</selectKey>
+  	insert into tbl_board(bno, title, content, writer) values(#{bno}, #{title}, #{content}, #{writer})
+  </insert>
+  
+  <delete id="delete">
+  	delete from tbl_board where bno = #{bno}
+  </delete>
+  
+  <update id="update">
+  	update tbl_board set  <!-- db 관련 부분은 대소문자 구문 안해도 됨(ex.updatedate) -->
+  	title = #{title},
+  	content = #{content},
+  	writer = #{writer},
+  	updatedate = sysdate
+  	where bno = #{bno}
+  </update>
+  
+  <sql id="criterial">
+  	<trim prefix="(" suffix=") and">
+	  	<foreach collection="typeArr" item="type" separator="or">
+	  		<if test="type=='T'.toString()">
+	  			title like '%'||#{keyword}||'%'
+	  		</if>
+	  		<if test="type=='C'.toString()">
+	  			content like '%'||#{keyword}||'%'
+	  		</if>
+	  		<if test="type=='W'.toString()">
+	  			writer like '%'||#{keyword}||'%'
+	  		</if>
+	  	</foreach>
+ 	</trim>
+  </sql>
+  
+  <select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
+  	<![CDATA[
+  	select bno, title, content, writer, regdate, updatedate
+  	from(
+  		select /*+ index_desc(tbl_board pk_board)*/
+  		rownum rn, bno, title, content, writer, regdate, updatedate
+  		from tbl_board
+  		where
+  	]]>
+  	
+  	<include refid="criterial"></include>
+  		
+  	<![CDATA[
+  		 rownum <= #{pageNum} * #{amount}
+  	)
+  	where rn > (#{pageNum}-1)*#{amount}
+  	]]>
+  </select>
+  
+  <select id="getTotalCount" resultType="int">
+  	select count(*) from tbl_board where
+  	<include refid="criterial"></include>
+  	 bno > 0 <!-- '> 0' 조건은 안써도 되지만 인덱스를 사용하기 위해 조건 추가 -->
+  </select>
+  
+  
+  
+  
+  
+  
+  <select id="searchTest" resultType="org.zerock.domain.BoardVO">
+  	select * from tbl_board
+  	where
+  	<trim suffix="and">
+  	<foreach collection="map" index="key" item="val" separator="or" open="(" close=")">
+  		<if test="key=='T'.toString()">
+  			title like #{val}
+  		</if>
+  		<if test="key=='C'.toString()">
+  			content like #{val}
+  		</if>
+  		<if test="key=='W'.toString()">
+  			writer like #{val}
+  		</if>
+  	</foreach>
+  	</trim>
+  	<![CDATA[rownum < 10]]>
+  </select>
+  
+  
+  
+  
+  
+</mapper>
+
+
+<!-- #{} (Prepared Statement 방식)
+JDBC의 PreparedStatement로 전달됩니다.
+
+자동으로 SQL 인젝션 방지 (매우 안전)
+
+파라미터 바인딩 시 사용 -->
+
+<!-- ${} (문자열 치환 방식)
+SQL 구문 안에 문자열을 그대로 삽입합니다 (Preprocessing).
+
+SQL 인젝션 위험 있음.
+
+보통 동적 테이블명, 컬럼명에만 사용합니다. -->
