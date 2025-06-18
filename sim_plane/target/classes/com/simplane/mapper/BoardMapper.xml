@@ -4,13 +4,22 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.simplane.mapper.BoardMapper">
 
-    <select id="read" resultType="com.simplane.domain.BoardVO">
-        select * from sim_board where boardid = #{boardid}
+    <resultMap id="BoardResultMap" type="com.simplane.domain.BoardVO">
+        <id property="boardid" column="boardid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="imagePath" column="imagepath"/>
+        <result property="regDate" column="regdate"/>
+    </resultMap>
+
+    <select id="read" resultMap="BoardResultMap">
+        SELECT * FROM sim_board WHERE boardid = #{boardid}
     </select>
 
-    <select id="readAll" resultType="com.simplane.domain.BoardVO">
+    <select id="readAll" resultMap="BoardResultMap">
         select * from sim_board where boardid > 0
     </select>
+
 
 
 
