@@ -4,23 +4,41 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.simplane.mapper.BoardMapper">
 
-    <resultMap id="BoardResultMap" type="com.simplane.domain.BoardVO">
-        <id property="boardid" column="boardid"/>
-        <result property="title" column="title"/>
-        <result property="content" column="content"/>
-        <result property="imagePath" column="imagepath"/>
-        <result property="regDate" column="regdate"/>
-    </resultMap>
-
-    <select id="read" resultMap="BoardResultMap">
+    <select id="read" resultType="com.simplane.domain.BoardVO">
         SELECT * FROM sim_board WHERE boardid = #{boardid}
     </select>
 
-    <select id="readAll" resultMap="BoardResultMap">
+    <select id="readAll" resultType="com.simplane.domain.BoardVO">
         select * from sim_board where boardid > 0
     </select>
 
+    <select id="getListWithPaging"
+            resultType="com.simplane.domain.BoardVO">
+        SELECT boardid, title, content, regdate, imagepath
+        FROM sim_board
+        <include refid="criterial" />
+        ORDER BY boardid DESC
+        LIMIT #{amount} OFFSET #{offset}
+    </select>
 
+    <sql id="criterial">
+        <trim prefix="(" suffix=") and">
+            <foreach collection="typeArr" item="type" separator="or">
 
+                <if test="type == 'T'">
+                    title LIKE CONCAT('%', #{keyword}, '%')
+                </if>
+
+                <if test="type == 'C'">
+                    content LIKE CONCAT('%', #{keyword}, '%')
+                </if>
+
+                <if test="type == 'W'">
+                    writer LIKE CONCAT('%', #{keyword}, '%')
+                </if>
+
+            </foreach>
+        </trim>
+    </sql>
 
 </mapper>

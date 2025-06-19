@@ -1,6 +1,7 @@
 package com.simplane.service;
 
 import com.simplane.domain.BoardVO;
+import com.simplane.domain.Criteria;
 import com.simplane.mapper.BoardMapper;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getAll() {
+    public List<BoardVO> getAll(Criteria cri) {
         log.info("getAll..........");
-        return mapper.readAll();
+        return mapper.getListWithPaging(cri);
     }
 }

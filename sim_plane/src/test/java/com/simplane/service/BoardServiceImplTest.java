@@ -1,6 +1,7 @@
 package com.simplane.service;
 
 import com.simplane.domain.BoardVO;
+import com.simplane.domain.Criteria;
 import junit.framework.TestCase;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -24,6 +25,6 @@ public class BoardServiceImplTest{
 
     @Test
     public void testGetAll() {
-        System.out.println(service.getAll());
+        service.getAll(new Criteria()).forEach(board -> log.info(board));
     }
 }

@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BoardController {
 
     private final BoardService service;
-
+    
+    //단 건 읽어오기
     @GetMapping({"/get", "/modify"})
     public void get(@RequestParam Long boardid, Model model) {
         log.info("get......modify..........");
