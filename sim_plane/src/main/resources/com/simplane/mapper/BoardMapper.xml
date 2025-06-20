@@ -16,12 +16,12 @@
             resultType="com.simplane.domain.BoardVO">
         SELECT boardid, title, content, regdate, imagepath
         FROM sim_board
-        <include refid="criterial" />
+        <include refid="criteria" />
         ORDER BY boardid DESC
         LIMIT #{amount} OFFSET #{offset}
     </select>
 
-    <sql id="criterial">
+    <sql id="criteria">
         <trim prefix="(" suffix=") and">
             <foreach collection="typeArr" item="type" separator="or">
 
@@ -40,5 +40,15 @@
             </foreach>
         </trim>
     </sql>
+
+    <select id="getTotalCount" resultType="int">
+        select count(*) from sim_board
+        where
+
+        <include refid="criteria" />
+
+        boardid > 0
+
+    </select>
 
 </mapper>

@@ -23,7 +23,8 @@ public class BoardMapperTests {
 
     @Test
     public void testRead() {
-        log.info(mapper.read(2L));
+        log.info("-----------------------------");
+        log.info(mapper.read(1L));
     }
 
     @Test

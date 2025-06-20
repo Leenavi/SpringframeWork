@@ -40,7 +40,7 @@ public class BoardControllerTest extends TestCase {
     public void testget() throws Exception {
         log.info(mockMvc.perform(MockMvcRequestBuilders
                         .get("/board/get")
-                        .param("boardid", "2"))
+                        .param("boardid", "1"))
                 .andReturn()
                 .getModelAndView()
                 .getModelMap());
