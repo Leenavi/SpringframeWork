@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sample.mapper.ProductMapper">
+  <insert id="insertProduct" parameterType="org.sample.domain.ProductVO">
+    INSERT INTO pd_product (productid, modelname, description, price, condition, brand)
+    VALUES (pd_product_seq.NEXTVAL, #{modelname}, #{description}, #{price}, #{condition}, #{brand})
+  </insert>
+
+  <select id="readProduct" parameterType="long" resultType="org.sample.domain.ProductVO">
+    SELECT * FROM pd_product WHERE productid = #{productid}
+  </select>
+
+  <update id="updateProduct" parameterType="org.sample.domain.ProductVO">
+    UPDATE pd_product SET modelname = #{modelname}, description = #{description}, price = #{price},
+    condition = #{condition}, brand = #{brand} WHERE productid = #{productid}
+  </update>
+
+  <delete id="deleteProduct" parameterType="long">
+    DELETE FROM pd_product WHERE productid = #{productid}
+  </delete>
+
+  <select id="getProductById" parameterType="long" resultType="int">
+    SELECT COUNT(*) FROM pd_product WHERE productid = #{productid}
+  </select>
+</mapper>

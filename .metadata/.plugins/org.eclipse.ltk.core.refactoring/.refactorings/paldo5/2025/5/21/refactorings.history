@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;paldo5/src/main/webapp/WEB-INF/views/board/modify.jsp&apos; to &apos;modify2.jsp&apos;" description="Rename resource &apos;modify.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/views/board/modify.jsp" name="modify2.jsp" stamp="1747929976872" updateReferences="true"/>
+</session>

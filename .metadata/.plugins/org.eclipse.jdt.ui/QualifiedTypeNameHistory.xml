@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="org.sample.domain.Criteria"/>
+    <fullyQualifiedTypeName name="org.sample.domain.Criteria.Criterial"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.sample.domain.PostDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
+</qualifiedTypeNameHistroy>

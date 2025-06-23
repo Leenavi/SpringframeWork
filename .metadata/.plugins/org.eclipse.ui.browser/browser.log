@@ -1,0 +1,108 @@
+
+4월 27, 2025 17:05:52.726 NEW SESSION
+4월 27, 2025 17:05:52.727 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+4월 27, 2025 17:11:42.981 NEW SESSION
+4월 27, 2025 17:11:42.981 Created TensorFlow Lite XNNPACK delegate for CPU.
+4월 27, 2025 17:14:21.619 Created TensorFlow Lite XNNPACK delegate for CPU.
+
+5월 22, 2025 20:41:12.593 NEW SESSION
+5월 22, 2025 20:41:12.593 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 20:43:07.498 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 20:43:07.834 [16684:1904:0522/204307.834:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 20:43:10.402 [16684:3048:0522/204310.401:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 20:55:34.480 [4944:5224:0522/205534.480:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 20:55:34.512 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 20:55:34.658 [4944:17348:0522/205534.658:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 20:58:45.320 [15128:4828:0522/205845.320:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 20:58:45.356 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 20:59:01.994 [17208:6824:0522/205901.994:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 20:59:02.48 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 20:59:02.176 [17208:16708:0522/205902.175:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 20:59:27.813 [17208:16708:0522/205927.812:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:07:49.385 [3440:13124:0522/210749.385:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:07:49.448 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:07:49.545 [3440:6244:0522/210749.545:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:08:09.809 [3440:6244:0522/210809.809:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:09:07.901 [3440:6244:0522/210907.900:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:10:56.290 [3440:6244:0522/211056.288:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:14:23.833 [3440:6244:0522/211423.833:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:16:20.645 [16480:6868:0522/211620.645:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:16:20.690 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:16:20.825 [16480:9348:0522/211620.825:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:18:07.272 [8892:1188:0522/211807.272:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:18:07.307 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:18:07.432 [8892:15564:0522/211807.432:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:19:36.135 [9224:12776:0522/211936.134:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:19:36.170 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:19:36.290 [9224:15564:0522/211936.290:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:20:30.742 [16444:16752:0522/212030.741:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:20:30.790 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:20:30.941 [16444:10940:0522/212030.941:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:21:28.389 [4628:11032:0522/212128.389:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:21:28.427 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:21:28.540 [4628:7424:0522/212128.539:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:21:57.979 [11856:16524:0522/212157.979:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:21:58.23 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:21:58.153 [11856:16252:0522/212158.153:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:22:17.266 [9192:392:0522/212217.266:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:22:17.306 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:22:17.421 [9192:7040:0522/212217.421:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:24:11.61 [16496:5200:0522/212411.060:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:24:11.107 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:24:11.210 [16496:17348:0522/212411.209:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:32:13.291 [15496:13996:0522/213213.290:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:32:13.327 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:32:13.429 [15496:17156:0522/213213.429:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:32:36.938 [15496:17156:0522/213236.937:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+5월 22, 2025 21:36:02.97 [3156:1524:0522/213602.097:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:36:02.144 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:36:02.255 [3156:4848:0522/213602.255:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:36:22.667 [3156:4848:0522/213622.667:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:37:43.115 [7076:16436:0522/213743.114:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:37:43.149 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:37:43.277 [7076:4916:0522/213743.277:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:38:51.759 [8316:8696:0522/213851.758:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:38:51.799 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:38:51.903 [8316:14996:0522/213851.902:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+5월 22, 2025 21:42:31.294 [2620:9252:0522/214231.294:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:42:31.329 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:42:31.457 [2620:10400:0522/214231.457:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:43:05.590 [6828:8436:0522/214305.590:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:43:05.654 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:43:05.754 [6828:2332:0522/214305.753:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:43:33.469 [6828:2332:0522/214333.468:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:44:14.896 [6828:2332:0522/214414.895:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:45:58.67 [6828:2332:0522/214558.066:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:49:44.769 [6828:2332:0522/214944.768:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:55:03.35 [14916:6812:0522/215503.035:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 21:55:03.76 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 21:55:03.194 [14916:14772:0522/215503.194:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:55:24.231 [14916:14772:0522/215524.231:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:56:18.672 [14916:14772:0522/215618.671:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 21:57:55.140 [14916:14772:0522/215755.139:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:01:02.907 [14916:14772:0522/220102.906:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:02:59.289 [2324:12460:0522/220259.289:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 22:02:59.319 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 22:02:59.454 [2324:4132:0522/220259.454:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:03:20.347 [2324:4132:0522/220320.346:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:04:04.567 [2324:4132:0522/220404.567:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:24:32.160 [7160:16204:0522/222432.160:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 22:24:32.329 [7160:16456:0522/222432.327:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:24:33.166 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 22:28:32.165 [7576:14140:0522/222832.164:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 22:28:32.199 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 22:28:32.312 [7576:5884:0522/222832.311:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:28:54.148 [7576:5884:0522/222854.147:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:58:57.280 [17096:13216:0522/225857.279:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 22:58:57.459 [17096:8608:0522/225857.458:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 22:58:57.712 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 23:02:29.668 [14972:17584:0522/230229.668:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 23:02:29.816 [14972:14928:0522/230229.816:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 23:02:30.46 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 23:02:57.985 [14972:14928:0522/230257.983:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 23:03:47.21 [14972:14928:0522/230347.021:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 23:05:24.592 [14972:14928:0522/230524.592:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+5월 22, 2025 23:06:45.961 [9136:17896:0522/230645.960:ERROR:chrome\browser\policy\cloud\fm_registration_token_uploader.cc:179] Client is missing for kUser scope
+5월 22, 2025 23:06:46.74 Created TensorFlow Lite XNNPACK delegate for CPU.
+5월 22, 2025 23:06:46.136 [9136:9004:0522/230646.136:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT

@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+/* ==================== 전체 배경/폰트 ==================== */
+body {
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(120deg, #f5e6ff 0%, #e1fcf8 65%, #e6ecff 100%);
+    font-family: 'Noto Sans KR', Arial, sans-serif;
+    color: #38376b;
+}
+
+/* ==================== 네비게이션 바 ==================== */
+.nav-bar {
+    border-bottom: 1px solid #e3f2fd;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+    box-sizing: border-box;
+}
+.nav-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #000;
+   
+}
+.nav-menu {
+    display: flex;
+    gap: 28px;
+}
+.nav-menu a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 6px 0;
+    transition: color .18s;
+}
+
+.nav-bar:hover {
+  background-color: rgba(0, 0, 0, 0.77); /* 배경 검정 */
+  color: #fff;            /* 내부 글씨 흰색 */
+}
+
+/* 메뉴 항목 글씨도 같이 변경되도록 */
+.nav-bar:hover .nav-menu a {
+  color: #fff;
+}
+
+.nav-menu a:hover {
+    color: #00bcd4;
+    border-bottom: 2px solid #00bcd4;
+}
+
+.nav-bar:hover .nav-logo {
+  color: #fff;
+}
+
+/* ==================== 메인 전체 중앙정렬 ==================== */
+.main-area {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==================== 메인 타이틀(타이핑/배너) ==================== */
+.main-title {
+    position: relative;
+    display: inline-block;
+    font-size: 2.15rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    padding: 0.65em 2.6em;
+    margin: 44px auto 28px auto;
+    background: linear-gradient(105deg, #ffffffee 35%, #e5f1ff 80%, #d0e9ff 100%);
+    border-radius: 2em;
+    box-shadow:
+        0 4px 28px 0 #6cc6ff44,
+        0 1px 12px 0 #f6fcffcc,
+        0 0.5px 0px 0 #62a8ff;
+    border: 1.5px solid #000;
+    backdrop-filter: blur(1.8px) saturate(1.2);
+    -webkit-backdrop-filter: blur(1.8px) saturate(1.2);
+    text-align: center;
+    color: #000;
+    text-shadow:
+        0 2px 11px #80cfff99,
+        0 1.2px 0 #fff;
+    z-index: 1;
+    min-width: 320px;
+    max-width: 90vw;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.main-title::before {
+    content: '';
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 110%; height: 120%;
+    transform: translate(-50%, -50%);
+    border-radius: 2.1em;
+    background: radial-gradient(circle, #c3e6ff44 65%, #9ed6fa22 100%, transparent 100%);
+    filter: blur(8px);
+    z-index: -1;
+    opacity: 0.72;
+    pointer-events: none;
+}
+.main-title::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -3px;
+    transform: translateX(-50%);
+    width: 58%; height: 12px;
+    border-radius: 100px;
+    background: linear-gradient(180deg, #e3f3ff 10%, transparent 100%);
+    opacity: 0.45;
+    z-index: 0;
+    pointer-events: none;
+}
+.typing-cursor {
+    margin-left: 0.35em;
+    color: #000;
+    text-shadow: 0 0 10px #2498ffd0, 0 0 9px #aef3ffcc;
+    animation: blinkCursor 0.7s steps(1) infinite;
+}
+@keyframes blinkCursor {
+    0%, 100% { opacity: 0; }
+    40% { opacity: 1; }
+}
+
+/* ==================== 폰(동영상+프레임) ==================== */
+.phone-container {
+    position: relative;
+    width: 260px;
+    height: 530px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 👇 그림자 추가! */
+    box-shadow: 0 12px 56px 0 rgba(30, 60, 140, 0.18), 0 2px 12px 0 rgba(80, 80, 140, 0.09);
+    border-radius: 40px;
+}
+.phone-screen {
+    position: absolute;
+    top: 16px;           /* 프레임의 내부 '화면' 위치에 맞게 조정 */
+    left: 17px;
+    width: 227px;        /* 프레임 화면 크기 */
+    height: 498px;
+    border-radius: 30px; /* 프레임의 둥근 정도와 일치 */
+    z-index: 1;
+    object-fit: cover;
+    background: #222;
+    box-shadow: 0 4px 24px rgba(30,144,255,0.13);
+}
+.phone-frame-img {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ==================== 모바일 반응형 ==================== */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 1.1rem;
+        min-width: 0;
+        padding: 0.6em 1.2em;
+    }
+    .phone-container {
+        width: 140px;
+        height: 285px;
+    }
+    .phone-screen {
+        width: 120px;
+        height: 260px;
+        top: 10px;
+        left: 10px;
+        border-radius: 15px;
+    }
+    .nav-bar { padding: 0 18px; }
+}
+/*  --------------- 메인 top  --------------------------- */
+
+/*  --------------- 메인 top  --------------------------- */
+
+.logo-img {
+    height: 56px;
+    width: auto;
+    max-width: 56px;
+    vertical-align: middle;
+    margin-right: 15px;
+    border-radius: 10px;
+    background: transparent;    /* 보장 */
+    padding: 0;                  /* 불필요 여백 제거 */
+    box-shadow: 
+        0 4px 12px rgba(30, 100, 240, 0.1);  /* 너무 강하지 않게 조절 */
+    transition: height 0.18s cubic-bezier(.33,1.2,.75,1.02);
+    
+}
+
+.nav-logo img {
+  height: 56px;
+  width: auto;
+  display: inline-block;
+}
+

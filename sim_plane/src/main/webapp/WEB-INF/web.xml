@@ -6,7 +6,9 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -23,6 +25,13 @@
 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
+
+		<multipart-config>
+			<location>c:\\upload\\temp</location>
+			<max-file-size>20971520</max-file-size> <!-- 1MB * 20 => 20M -->
+			<max-request-size>41943040</max-request-size> <!-- 40M -->
+			<file-size-threshold>20971520</file-size-threshold> <!-- 20M -->
+		</multipart-config>
 	</servlet>
 		
 	<servlet-mapping>
